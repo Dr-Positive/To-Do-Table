@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "jwtSecret":"positive d49123456",
+    "mongoUrl":"mongodb+srv://positive:d49123456@cluster0.we6wp.mongodb.net/test"    
+}
