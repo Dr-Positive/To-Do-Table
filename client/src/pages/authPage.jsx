@@ -14,10 +14,8 @@ function AuthPage({ onSubmit }) {
   const message = useMessage()
   const { loading,  request, error, clearError } = useHttp()
   const [values, setValues] = useState({
-    login: "",
     email: "",
     password: "",
-    passwordRepeat: "",
   })
 
   useEffect( () => {
@@ -45,7 +43,7 @@ function AuthPage({ onSubmit }) {
         <h1>Авторизация</h1>
       <div className={styles["form-container"]}>
         <div>
-        <input type="login" id="user-name" name="user-name" placeholder="Имя пользователя" onChange={handleFieldChange}/>
+        <input type="email" id="email" name="email" placeholder="Имя пользователя" onChange={handleFieldChange}/>
         <input type="password" id="password" name="password" placeholder="Пароль" onChange={handleFieldChange}/>
           <button className={styles["logButton"]} onClick={registerHandler} >Войти</button>
           <button className={styles["regButton"]}>Регистрация</button>
