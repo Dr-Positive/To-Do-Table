@@ -11,65 +11,83 @@ import 'materialize-css'
 // })
 
 function MainPage({ onSubmit }) {
-  const message = useMessage()
-  const { loading,  request, error, clearError } = useHttp()
-  const [values, setValues] = useState({
-    login: "",
-    email: "",
-    password: "",
-    passwordRepeat: "",
-  })
 
-  useEffect( () => {
-    message(error)
-    clearError()
-  }, [error, message, clearError]);
-
-
-
-  const handleFieldChange = (evt) => {
-    setValues({ ...values, [evt.target.name]: evt.target.value });
-  };
-
-  const registerHandler = async () => {
-    try {
-      const data = await request("http://localhost:5000/api/auth/register", "Post", { ...values });
-      console.log("Data", data);
-    } catch (e) {}
-  };
 
   return (
     <>
-      <div className={styles.header}>
-        <div>
-          <TextField
-            id="outlined-basic"
-            className={styles.field}
-            variant="outlined"
-            name="login"
-            label="Логин"
-            onChange={handleFieldChange}
-          />
-          <TextField
-            id="outlined-basic"
-            className={styles.field}
-            variant="outlined"
-            name="password"
-            label="пароль"
-            type="password"
-            onChange={handleFieldChange}
-          />
-          <button className={styles.but} onClick={registerHandler} 
-          disabled={loading}
-          
-          >Войти</button>
-        </div>
-        <div>
-          {" "}
-          <p className={styles.test}>Edit and save to reload.</p>{" "}
-        </div>
+    <div className={styles["body-container"]}>
+      <header>
+            <div className={styles["options-container"]}>
+              <label class="my-button-1" htmlFor={styles["side-checkbox"]}>Настройки</label>
+              </div>
+            <div className={styles["logo"]}><a href="/">TO-DO-LIST</a></div>
+            <div className={styles["RegAuth-container"]}>
+               <button className={styles["loginButton"]}>Войти</button>
+               <button className={styles["regsButton"]}>Зарегистрироваться</button>
+            </div>
+         </header>
+
+         <input type="checkbox" id={styles["side-checkbox"]} />
+         <div className={styles["side-panel"]}>
+            <label className={styles["side-button-2"]} htmlFor={styles["side-checkbox"]}>+</label>
+            <div className={styles["side-title"]}>Выдвижная панель:</div>
+            <p>Информация в панели</p>
+         </div>
+
+
+         <div className={styles["main-container"]}>
+            <div className={styles["filterInput-container"]}>
+               <span className={styles.searchIcon}><i class="fa fa-search"></i></span>
+               <input className={styles.filterInput} type="text" placeholder="Search.." size="40" />
+            </div>
+            <br />
+            <table className={styles.mainTable}>
+               <tr >
+                  <th>№</th>
+                  <th>Задание</th>
+                  <th>Ответственный</th>
+                  <th>Тема</th>
+                  <th>Статус</th>
+                  <th>До какого числа</th>
+                  <th>Дополнительно</th>
+               </tr>
+               <tr className={styles.row}>
+                  <td>1</td>
+                  <td>Definition of perfomance metrics</td>
+                  <td>Jeremy Dickens</td>
+                  <td>Theme 1</td>
+                  <td>Completed</td>
+                  <td>03/17/2020</td>
+                  <td>Подробнее</td>
+               </tr>
+
+               <tr className={styles.row}>
+                  <td>2</td>
+                  <td>Definition of perfomance metrics</td>
+                  <td>Jeremy Dickens</td>
+                  <td>Theme 1</td>
+                  <td>Completed</td>
+                  <td>03/17/2020</td>
+                  <td>Подробнее</td>
+               </tr>
+            </table>
+
+            <div className={styles["bottomButtons-container"]}>
+            <a href="#zatemnenie">Вызвать всплывающее окно</a>
+               <button>Create new</button>
+
+            </div>
+            <div className={styles["bottomButtons-container"]}>
+      <div id="okno">
+        Всплывающее окошко!<br/>
+        <a href="#" class="close">Закрыть окно</a>
       </div>
-    </>
+    </div>
+         </div>
+         </div>
+
+         <footer></footer>
+      </>
   );
 }
 export default MainPage;
