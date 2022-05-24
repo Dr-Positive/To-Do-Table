@@ -1,8 +1,9 @@
 import styles from "./mainPage.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@material-ui/core";
 import { useHttp } from "../hooks/http.hook";
 import { useMessage } from "../hooks/message.hook";
+import 'materialize-css'
 
 // export const mainPage = () => {
 // const [form , setForm] = useState ({
@@ -11,7 +12,7 @@ import { useMessage } from "../hooks/message.hook";
 
 function MainPage({ onSubmit }) {
   const message = useMessage()
-  const { loading,  request } = useHttp()
+  const { loading,  request, error, clearError } = useHttp()
   const [values, setValues] = useState({
     login: "",
     email: "",
@@ -19,10 +20,10 @@ function MainPage({ onSubmit }) {
     passwordRepeat: "",
   })
 
-  // useEffect(() => {
-  //   message(error)
-  //   clearErrors()
-  // }, [error, message, clearErrors]);
+  useEffect( () => {
+    message(error)
+    clearError()
+  }, [error, message, clearError]);
 
 
 
@@ -58,14 +59,14 @@ function MainPage({ onSubmit }) {
             type="password"
             onChange={handleFieldChange}
           />
-          <Button onClick={registerHandler} 
+          <button className={styles.but} onClick={registerHandler} 
           disabled={loading}
           
-          >Войти</Button>
+          >Войти</button>
         </div>
         <div>
           {" "}
-          <p>Edit and save to reload.</p>{" "}
+          <p className={styles.test}>Edit and save to reload.</p>{" "}
         </div>
       </div>
     </>

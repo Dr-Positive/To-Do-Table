@@ -2,6 +2,7 @@ import styles from "./authPage.module.css";
 import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 import { useHttp } from "../hooks/http.hook";
+import 'materialize-css'
 
 // export const mainPage = () => {
 // const [form , setForm] = useState ({
@@ -15,27 +16,9 @@ function AuthPage() {
     <>
       <div className={styles.header}>
         <div>
-          <TextField
-            id="outlined-basic"
-            className={styles.field}
-            variant="outlined"
-            name="login"
-            label="Логин"
-            
-          />
-          <TextField
-            id="outlined-basic"
-            className={styles.field}
-            variant="outlined"
-            name="password"
-            label="пароль"
-            type="password"            
-          />
-          <Button           
-          >Войти</Button>
-        </div>
-        <div>
           {" "}
+          <button onclick="M.toast({html:'ari'})" ></button>
+          <a class="btn" onclick="M.toast({html: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Toast!</a>          
           <p>Edit and save to reload.</p>{" "}
         </div>
       </div>

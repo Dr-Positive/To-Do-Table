@@ -23,15 +23,15 @@ export const useHttp = () => {
 
         return data;
       } catch (e) {
-        setloading(false);
-        setError(e.message);
-        throw e;
+        setloading(false)
+        setError(e.message)
+        throw e
       }
     },
     []
   );
 
-  const clearError = () => setError(null);
+  const clearError = useCallback (  () => setError(null), [])
 
   return { loading, request, error, clearError };
 };
