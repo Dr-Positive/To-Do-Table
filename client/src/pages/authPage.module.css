@@ -101,7 +101,7 @@ html {
                     transform: translateY(-4px);
                 }
 
-                input {
+                .reglogForm-input {
                     color:  rgb(128, 128, 128);
                     background-color: #E8EEEF;
                     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
@@ -113,7 +113,7 @@ html {
                     width: 100%;
                     outline: none; 
                 }
-                input:focus-visible {
+                .reglogForm-input:focus-visible {
                     color:  #003E3E;
                 }
 
@@ -126,3 +126,8 @@ html {
                     color: #003E3E;
                     cursor: pointer;
                 }
+
+#toast-container {
+    color: red;
+    font-size: 22px;
+}

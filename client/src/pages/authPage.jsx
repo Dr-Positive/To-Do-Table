@@ -32,14 +32,7 @@ function AuthPage({ onSubmit }) {
   const registerHandler = async () => {
     try {
       const data = await request("http://localhost:5000/api/auth/register", "Post", { ...values });
-      message(data.message)
-    } catch (e) {}
-  };
-
-  const loginHandler = async () => {
-    try {
-      const data = await request("http://localhost:5000/api/auth/login", "Post", { ...values });
-      message(data.message)
+      console.log("Data", data);
     } catch (e) {}
   };
 
@@ -50,10 +43,10 @@ function AuthPage({ onSubmit }) {
         <h1>Авторизация</h1>
       <div className={styles["form-container"]}>
         <div>
-        <input type="email" id="email" name="email" placeholder="Имя пользователя" onChange={handleFieldChange}/>
-        <input type="password" id="password" name="password" placeholder="Пароль" onChange={handleFieldChange}/>
-          <button className={styles["logButton"]} onClick={loginHandler} disabled={loading} >Войти</button>
-          <button className={styles["regButton"]} onClick={registerHandler} disabled={loading} >Регистрация</button>
+        <input className={styles["reglogForm-input"]} type="email" id="email" name="email" placeholder="Имя пользователя" onChange={handleFieldChange}/>
+        <input className={styles["reglogForm-input"]} type="password" id="password" name="password" placeholder="Пароль" onChange={handleFieldChange}/>
+          <button className={styles["logButton"]} onClick={registerHandler} >Войти</button>
+          <button className={styles["regButton"]}>Регистрация</button>
           <br/>
           <a className={styles["forgotA"]}>Forgot your password?</a>
           </div>
