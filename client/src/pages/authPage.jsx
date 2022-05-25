@@ -32,7 +32,14 @@ function AuthPage({ onSubmit }) {
   const registerHandler = async () => {
     try {
       const data = await request("http://localhost:5000/api/auth/register", "Post", { ...values });
-      console.log("Data", data);
+      message(data.message)
+    } catch (e) {}
+  };
+
+  const loginHandler = async () => {
+    try {
+      const data = await request("http://localhost:5000/api/auth/login", "Post", { ...values });
+      message(data.message)
     } catch (e) {}
   };
 
@@ -45,8 +52,8 @@ function AuthPage({ onSubmit }) {
         <div>
         <input type="email" id="email" name="email" placeholder="Имя пользователя" onChange={handleFieldChange}/>
         <input type="password" id="password" name="password" placeholder="Пароль" onChange={handleFieldChange}/>
-          <button className={styles["logButton"]} onClick={registerHandler} >Войти</button>
-          <button className={styles["regButton"]}>Регистрация</button>
+          <button className={styles["logButton"]} onClick={loginHandler} disabled={loading} >Войти</button>
+          <button className={styles["regButton"]} onClick={registerHandler} disabled={loading} >Регистрация</button>
           <br/>
           <a className={styles["forgotA"]}>Forgot your password?</a>
           </div>
