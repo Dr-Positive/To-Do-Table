@@ -75,7 +75,8 @@ router.post(
       const isMatch = await bcrypt.compare(password, user.password)
 
       if (!isMatch) {
-        return res.status(400).json({ message: "Неверный пароль, попробуйте снова" })
+         res.status(400).json({ message: "Неверный пароль, попробуйте снова" });
+         return;
       }
 
       const token = jwt.sign({ user: user.id }, config.get("jwtSecret"), { expiresIn: "1h"})
@@ -88,5 +89,8 @@ router.post(
     }
   }
 )
+
+
+
 
 module.exports = router;
