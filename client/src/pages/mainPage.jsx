@@ -35,7 +35,7 @@ function MainPage({ onSubmit }) {
                <div className={styles["logo"]}><a href="/">TO-DO-LIST</a></div>
                <div className={styles["RegAuth-container"]}>
                   <Link to="/auth"><button className={styles["loginButton"]}>Войти</button></Link>
-                  <Link to="/auth"><button className={styles["regsButton"]}>Зарегистрироваться</button></Link>
+                  <Link to="/register"><button className={styles["regsButton"]}>Зарегистрироваться</button></Link>
                </div>
             </header>
 
