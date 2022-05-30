@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 //   email: "", password: ''
 // })
 
+
 function AuthPage({}) {
   const auth = useContext(AuthContext);
   const message = useMessage();
@@ -76,12 +77,12 @@ function AuthPage({}) {
                 onChange={handleFieldChange}
               />
 
-              <button className={styles["logButton"]} onClick={loginHandler}>
+              <button className={styles["logButton"]} onClick={loginHandler} disabled={loading}>
                 Войти
               </button>
               <br />
               <Link to={"/register"}>
-                <button className={styles["regButton"]} onClick={registerHandler}>
+                <button className={styles["regButton"]} onClick={registerHandler} disabled={loading}>
                   Регистрация
                 </button>
               </Link>
