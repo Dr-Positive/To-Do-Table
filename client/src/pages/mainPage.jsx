@@ -7,6 +7,8 @@ import 'materialize-css'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
+import { Link } from "react-router-dom";
+
 // export const mainPage = () => {
 // const [form , setForm] = useState ({
 //   email: "", password: ''
@@ -33,8 +35,8 @@ function MainPage({ onSubmit }) {
                </div>
                <div className={styles["logo"]}><a href="/">TO-DO-LIST</a></div>
                <div className={styles["RegAuth-container"]}>
-                  <button className={styles["loginButton"]}>Войти</button>
-                  <button className={styles["regsButton"]}>Зарегистрироваться</button>
+                  <Link to="/auth"><button className={styles["loginButton"]}>Войти</button></Link>
+                  <Link to="/register"><button className={styles["regsButton"]}>Зарегистрироваться</button></Link>
                </div>
             </header>
 
