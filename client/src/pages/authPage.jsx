@@ -23,15 +23,23 @@ function AuthPage({}) {
     password: "",
   });
 
+  useEffect( () => {
+    message(error)
+    clearError()
+  }, [error, message, clearError]);
+
+
+
+
   const handleFieldChange = (evt) => {
     setValues({ ...values, [evt.target.name]: evt.target.value });
-  };
+  }
 
   const registerHandler = async () => {
     try {
       const data = await request(
-        "http://localhost:5000/api/auth/login",
-        "Get",
+        "http://localhost:5000/api/auth/register",
+        "Post",
         {
           ...values,
         }
@@ -80,16 +88,17 @@ function AuthPage({}) {
                 Войти
               </button>
               <br />
-              <Link to={"/register"}>
+              {/* <Link to={"/register"}> */}
                 <button className={styles["regButton"]} onClick={registerHandler}>
                   Регистрация
                 </button>
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
         </div>
       </div>
     </>
   );
-}
+  }
+
 export default AuthPage;

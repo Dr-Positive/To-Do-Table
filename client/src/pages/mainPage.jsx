@@ -22,6 +22,7 @@ const contentStyle = {
 
 function MainPage({ onSubmit }) {
 
+   const [ task, setTask ] = useState('')   
 
    return (
       <>
@@ -90,12 +91,12 @@ function MainPage({ onSubmit }) {
                   <Popup modal contentStyle={contentStyle} trigger={<button className={styles["button-30"]}>Добавить задание</button>}>
                      <div> Добавить задание
                         <div className={styles["popup-form"]}>
-                           <input className={styles["popupForm-input"]} type="Task" id="Task" name="Task" placeholder="Задание" onChange={""} />
-                           <input className={styles["popupForm-input"]} type="Responsible" id="Responsible" name="Responsible" placeholder="Ответственный" onChange={""} />
-                           <input className={styles["popupForm-input"]} type="Theme" id="Theme" name="Theme" placeholder="Тема" onChange={""} />
-                           <input className={styles["popupForm-input"]} type="Status" id="Status" name="Status" placeholder="Статус" onChange={""} />
-                           <input className={styles["popupForm-input"]} type="Deadline" id="Deadline" name="Deadline" placeholder="До какого числа" onChange={""} />
-                           <input className={styles["popupForm-input"]} type="Info" id="Info" name="Info" placeholder="Дополнительно" onChange={""} />
+                           <input className={styles["popupForm-input"]} type="Task" id="Task" name="Task" placeholder="Задание" onChange={e => setTask(e.target.value)} />
+                           <input className={styles["popupForm-input"]} type="Responsible" id="Responsible" name="Responsible" placeholder="Ответственный" onChange={e => setTask(e.target.value)} />
+                           <input className={styles["popupForm-input"]} type="Theme" id="Theme" name="Theme" placeholder="Тема" onChange={e => setTask(e.target.value)} />
+                           <input className={styles["popupForm-input"]} type="Status" id="Status" name="Status" placeholder="Статус" oonChange={e => setTask(e.target.value)} />
+                           <input className={styles["popupForm-input"]} type="Deadline" id="Deadline" name="Deadline" placeholder="До какого числа" onChange={e => setTask(e.target.value)} />
+                           <input className={styles["popupForm-input"]} type="Info" id="Info" name="Info" placeholder="Дополнительно" onChange={e => setTask(e.target.value)} />
                         </div>
                         <div className={styles["center-wrapper"]}><button className={styles["button-31"]}>Добавить задание</button></div>
 
