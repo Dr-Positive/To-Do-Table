@@ -11,6 +11,7 @@ app.use(cors())
 
 
 app.use("/api", require('./routes/index'))
+app.use("/api/task", require('./routes/task'))
 
 
 

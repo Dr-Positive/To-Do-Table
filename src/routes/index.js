@@ -7,6 +7,9 @@ const router = Router();
 
 const config = require("config");
 
+const Task = require("../models/task");
+
+
 // /api/auth/register
 
 router.post(
@@ -89,8 +92,6 @@ router.post(
     }
   }
 )
-
-
 
 
 module.exports = router;

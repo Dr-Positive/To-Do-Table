@@ -22,9 +22,50 @@ const contentStyle = {
 };
 
 
+
+
+
 function MainPage({ onSubmit }) {
 
-   const [ task, setTask ] = useState('')   
+   const [ task, setTask ] = useState('')  
+    
+   const message = useMessage();
+   const { loading, request, error, clearError } = useHttp();
+   const [values, setValues] = useState({
+     taskName: "",
+     taskTheme: "",
+     status: "",
+     date: "",
+     details: "",
+     owner: "",
+   });
+ 
+   useEffect( () => {
+     message(error)
+     clearError()
+   }, [error, message, clearError]);
+ 
+ 
+ 
+   const handleFieldChange = (evt) => {
+     setValues({ ...values, [evt.target.name]: evt.target.value });
+     console.log("Check data", evt.target.name, evt.target.value );
+     //console.log(...values[evt.target.name]);
+   }
+ 
+   const pressHandler = async event => {
+      try {
+        const data = await request(
+          "http://localhost:5000/api/task/save",
+          "Post",
+          {
+            ...values,
+          }
+        );
+        console.log("Data", data);
+      } catch (e) {}
+    };
+
 
    return (
       <>
@@ -91,22 +132,22 @@ function MainPage({ onSubmit }) {
 
                <div className={styles["bottomButtons-container"]}>
                   <Popup modal contentStyle={contentStyle} trigger={<button className={styles["button-30"]}>Добавить задание</button>}>
-                     <div> Добавить задание
+                     <div><h2>Добавить задание</h2>
                         <div className={styles["popup-form"]}>
-                           <input className={styles["popupForm-input"]} type="Task" id="Task" name="Task" placeholder="Задание" onChange={e => setTask(e.target.value)} />
-                           <input className={styles["popupForm-input"]} type="Responsible" id="Responsible" name="Responsible" placeholder="Ответственный" onChange={e => setTask(e.target.value)} />
-                           <input className={styles["popupForm-input"]} type="Theme" id="Theme" name="Theme" placeholder="Тема" onChange={e => setTask(e.target.value)} />
-                           <input className={styles["popupForm-input"]} type="Status" id="Status" name="Status" placeholder="Статус" oonChange={e => setTask(e.target.value)} />
-                           <input className={styles["popupForm-input"]} type="Deadline" id="Deadline" name="Deadline" placeholder="До какого числа" onChange={e => setTask(e.target.value)} />
-                           <input className={styles["popupForm-input"]} type="Info" id="Info" name="Info" placeholder="Дополнительно" onChange={e => setTask(e.target.value)} />
+                           <input className={styles["popupForm-input"]} type="taskName" id="taskName" name="taskName" placeholder="Задание" onChange={handleFieldChange} />
+                           <input className={styles["popupForm-input"]} type="owner" id="owner" name="owner" placeholder="Ответственный" onChange={handleFieldChange} />
+                           <input className={styles["popupForm-input"]} type="taskTheme" id="taskTheme" name="taskTheme" placeholder="Тема" onChange={handleFieldChange} />
+                           <input className={styles["popupForm-input"]} type="status" id="status" name="status" placeholder="Статус" onChange={handleFieldChange} />
+                           <input className={styles["popupForm-input"]} type="date" id="date" name="date" placeholder="До какого числа" onChange={handleFieldChange} />
+                           <input className={styles["popupForm-input"]} type="details" id="details" name="details" placeholder="Дополнительно" onChange={handleFieldChange} />
                         </div>
-                        <div className={styles["center-wrapper"]}><button className={styles["button-31"]}>Добавить задание</button></div>
+                        <div className={styles["center-wrapper"]}><button className={styles["button-31"]} onClick={pressHandler}>Добавить задание</button></div>
 
                      </div>
                   </Popup>
 
                   <Popup modal contentStyle={contentStyle} trigger={<button className={styles["button-30"]}>Изменить</button>}>
-                     <div> Изменить
+                     <div> <h2>Изменить</h2>
                         <div className={styles["popup-form"]}>
                            <input className={styles["popupForm-input"]} type="Task" id="Task" name="Task" placeholder="Задание" onChange={""} />
                            <input className={styles["popupForm-input"]} type="Responsible" id="Responsible" name="Responsible" placeholder="Ответственный" onChange={""} />
