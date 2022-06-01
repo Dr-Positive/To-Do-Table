@@ -103,7 +103,7 @@ const contentStyle = {
 
                <div className={styles["main-container"]}>
                   <div className={styles["filterInput-container"]}>
-                     <span className={styles.searchIcon}><i class="fa fa-search"></i></span>
+                     <span className={styles.searchIcon}><i></i></span>
                      <input className={styles.filterInput} type="text" placeholder="Search.." size="40" />
                   </div>
                   <br />
@@ -134,12 +134,12 @@ const contentStyle = {
                      <Popup modal contentStyle={contentStyle} trigger={<button className={styles["button-30"]}>Изменить</button>}>
                         <div> <h2>Изменить</h2>
                            <div className={styles["popup-form"]}>
-                              <input className={styles["popupForm-input"]} type="Task" id="Task" name="Task" placeholder="Задание" onChange={""} />
-                              <input className={styles["popupForm-input"]} type="Responsible" id="Responsible" name="Responsible" placeholder="Ответственный" onChange={""} />
-                              <input className={styles["popupForm-input"]} type="Theme" id="Theme" name="Theme" placeholder="Тема" onChange={""} />
-                              <input className={styles["popupForm-input"]} type="Status" id="Status" name="Status" placeholder="Статус" onChange={""} />
-                              <input className={styles["popupForm-input"]} type="Deadline" id="Deadline" name="Deadline" placeholder="До какого числа" onChange={""} />
-                              <input className={styles["popupForm-input"]} type="Info" id="Info" name="Info" placeholder="Дополнительно" onChange={""} />
+                           <input className={styles["popupForm-input"]} type="taskName" id="taskName" name="taskName" placeholder="Задание" onChange={""} />
+                              <input className={styles["popupForm-input"]} type="owner" id="owner" name="owner" placeholder="Ответственный" onChange={""} />
+                              <input className={styles["popupForm-input"]} type="taskTheme" id="taskTheme" name="taskTheme" placeholder="Тема" onChange={""} />
+                              <input className={styles["popupForm-input"]} type="status" id="status" name="status" placeholder="Статус" onChange={""} />
+                              <input className={styles["popupForm-input"]} type="date" id="date" name="date" placeholder="До какого числа" onChange={""} />
+                              <input className={styles["popupForm-input"]} type="details" id="details" name="details" placeholder="Дополнительно" onChange={""} />
                            </div>
                            <div className={styles["center-wrapper"]}><button className={styles["button-31"]}>Изменить задание</button></div>
                         </div>

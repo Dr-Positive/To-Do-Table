@@ -19,7 +19,7 @@ export const Navbar = () => {
         <nav>
             <header>
                 <div className={styles["options-container"]}>
-                    <label class="my-button-1" htmlFor={styles["side-checkbox"]}>Настройки</label>
+                    <label htmlFor={styles["side-checkbox"]}>Настройки</label>
                 </div>
                 <div className={styles["logo"]}><a href="/">TO-DO-LIST</a></div>
                 <div className={styles["RegAuth-container"]}>
