@@ -36,6 +36,7 @@ router.post('/save', async (req, res) => {
 
   router.get('/', async (req, res) => {
     try {
+      //Не работает пока нет Auth контекста
       const tasks = await Task.find({ owner: req.user.userId })
       res.json(tasks)
     } catch (e) {
@@ -45,7 +46,9 @@ router.post('/save', async (req, res) => {
   
   router.get('/:id', async (req, res) => {
     try {
-      const tasks = await task.findById(req.params.id)
+      //console.log(req.params.id)
+      const tasks = await Task.find({ id: req.params.id })
+      //console.log((tasks))
       res.json(tasks)
     } catch (e) {
       res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова3' })

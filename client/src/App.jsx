@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import  MainPage  from "./pages/mainPage";
 import  AuthPage  from "./pages/authPage";
 import  RegPage  from "./pages/regPage";
+import  DetailPage  from "./pages/DetailPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={ <MainPage />} />
       <Route path="/auth" element={ <AuthPage />} />
       <Route path="/register" element={ <RegPage />} />
+      <Route path="/detail/:id" element={ <DetailPage />} />
       {/* <Route path="" element={ <MainPage />} /> */}
     </Routes>
     </>
