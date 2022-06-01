@@ -1,11 +1,12 @@
 import styles from "./mainPage.module.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Button, TextField, Checkbox } from "@material-ui/core";
 import { useHttp } from "../hooks/http.hook";
 import { useMessage } from "../hooks/message.hook";
 import 'materialize-css'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import {AuthContext} from '../context/AuthContext'
 
 
 // export const mainPage = () => {
@@ -26,11 +27,11 @@ const contentStyle = {
 
 function MainPage({ onSubmit }) {
 
-   const [ task, setTask ] = useState('')  
-    
+   
+   const {token} = useContext(AuthContext)
    const message = useMessage();
    const { loading, request, error, clearError } = useHttp();
-   const [values, setValues] = useState({
+   const [values, setValues, tasks, setTasks] = useState({
      taskName: "",
      taskTheme: "",
      status: "",
@@ -39,11 +40,31 @@ function MainPage({ onSubmit }) {
      owner: "",
    });
  
-   useEffect( () => {
-     message(error)
-     clearError()
-   }, [error, message, clearError]);
+   // useEffect( () => {
+   //   message(error)
+   //   clearError()
+   // }, [error, message, clearError]);
+
+   const [ task, setTask ] = useState('')  
+   const data = []
  
+   const fetchTasks = useCallback(async () => {
+      try {
+        const fetched = await request('/api/task', 'GET', null)
+        //console.log(fetched)
+        const data = fetched
+        console.log(data)
+        setTasks(fetched)
+      //   data = json(fetched)
+        
+      } catch (e) {}
+    }, [token, request])
+
+   
+
+   useEffect(() => {
+      fetchTasks()
+    }, [fetchTasks])
  
  
    const handleFieldChange = (evt) => {
@@ -69,14 +90,7 @@ function MainPage({ onSubmit }) {
    return (
       <>
          <div className={styles["body-container"]}>
-            <input type="checkbox" id={styles["side-checkbox"]} />
-            <div className={styles["side-panel"]}>
-               <label className={styles["side-button-2"]} htmlFor={styles["side-checkbox"]}>+</label>
-               <div className={styles["side-title"]}>Выдвижная панель:</div>
-               <p>Информация в панели</p>
-            </div>
-
-
+            
             <div className={styles["main-container"]}>
                <div className={styles["filterInput-container"]}>
                   <span className={styles.searchIcon}><i class="fa fa-search"></i></span>
@@ -115,7 +129,23 @@ function MainPage({ onSubmit }) {
                      <td>03/17/2020</td>
                      <td>Подробнее</td>
                   </tr>
+                  {/* <tr>
+                    <th>User Id</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+                {data.map((item, i) => (
+                    <tr key={i}>
+                        <td>{item[i].taskName}</td>
+                        <td>{item.taskTheme}</td>
+                    </tr>
+                ))} */}
+                
+                
                </table>
+
+               {/* <button onClick={fetchLinks}></button> */}
 
 
                <div className={styles["bottomButtons-container"]}>
@@ -144,7 +174,7 @@ function MainPage({ onSubmit }) {
                            <input className={styles["popupForm-input"]} type="Deadline" id="Deadline" name="Deadline" placeholder="До какого числа" onChange={""} />
                            <input className={styles["popupForm-input"]} type="Info" id="Info" name="Info" placeholder="Дополнительно" onChange={""} />
                         </div>
-                        <div className={styles["center-wrapper"]}><button className={styles["button-31"]}>Добавить задание</button></div>
+                        <div className={styles["center-wrapper"]}><button className={styles["button-31"]}>Изменить задание</button></div>
                      </div>
                   </Popup>
                </div>
