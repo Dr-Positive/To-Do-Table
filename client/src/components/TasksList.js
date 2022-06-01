@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import styles from "../pages/mainPage.module.css";
+import { Checkbox } from "@material-ui/core";
 
 export const TasksList = ({ tasks }) => {
   if (!tasks.length) {
@@ -8,8 +9,9 @@ export const TasksList = ({ tasks }) => {
   }
 
   return (
-    <table>
+    <table className={styles.mainTable}>
       <tr>
+      <th><Checkbox /></th>
         <th>№</th>
         <th>Задание</th>
         <th>Ответственный</th>
@@ -21,12 +23,11 @@ export const TasksList = ({ tasks }) => {
         
       </tr>
 
-      <tbody>
       { tasks.map((task, index) => {
         return (
-          <tr key={task.id}>
-            <td>{task.id}</td>
-            {/* <td>{index + 1}</td> */}
+          <tr key={task.id} className={styles.row}>
+            <th><Checkbox /></th>
+            <td>{index + 1}</td>
             <td>{task.taskName}</td>
             <td>{task.owner}</td>
             <td>{task.taskTheme}</td>
@@ -39,7 +40,6 @@ export const TasksList = ({ tasks }) => {
           </tr>
         )
       }) }
-      </tbody>
     </table>
   )
 }

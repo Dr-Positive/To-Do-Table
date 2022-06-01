@@ -23,9 +23,7 @@ const contentStyle = {
 
 
 
-   function MainPage({ onSubmit }) {
-
-      
+   function MainPage({ onSubmit }) {  
 
 
       const { token } = useContext(AuthContext)
@@ -109,46 +107,12 @@ const contentStyle = {
                      <input className={styles.filterInput} type="text" placeholder="Search.." size="40" />
                   </div>
                   <br />
-                  <table className={styles.mainTable}>
-                     <tr >
-                        <th><Checkbox /></th>
-                        <th>№</th>
-                        <th>Задание</th>
-                        <th>Ответственный</th>
-                        <th>Тема</th>
-                        <th>Статус</th>
-                        <th>До какого числа</th>
-                        <th>Дополнительно</th>
-                     </tr>
-                     <tr className={styles.row}>
-                        <td><Checkbox /></td>
-                        <td>1</td>
-                        <td>Definition of perfomance metrics</td>
-                        <td>Jeremy Dickens</td>
-                        <td>Theme 1</td>
-                        <td>Completed</td>
-                        <td>03/17/2020</td>
-                        <td>Подробнее</td>
-                     </tr>
-
-                     <tr className={styles.row}>
-                        <td><Checkbox /></td>
-                        <td>2</td>
-                        <td>Definition of perfomance metrics</td>
-                        <td>Jeremy Dickens</td>
-                        <td>Theme 1</td>
-                        <td>Completed</td>
-                        <td>03/17/2020</td>
-                        <td>Подробнее</td>
-                     </tr>
-
-
-
-                  </table>
+                  
 
                   {/* <button onClick={fetchLinks}></button> */}
-
+                  <div className={styles["mainTable-container"]}>
                   {!loading && <TasksList tasks={task} />}
+                  </div>
 
 
                   <div className={styles["bottomButtons-container"]}>

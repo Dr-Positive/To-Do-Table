@@ -109,6 +109,11 @@ header {
 } */
 
 /*Таблица */
+mainTable-container {
+  width: 100%;
+
+}
+
 .mainTable {
   width: 100%;
 margin-left:auto; 
