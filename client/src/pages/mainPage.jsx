@@ -7,7 +7,6 @@ import 'materialize-css'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-import { Link } from "react-router-dom";
 
 // export const mainPage = () => {
 // const [form , setForm] = useState ({
@@ -70,17 +69,6 @@ function MainPage({ onSubmit }) {
    return (
       <>
          <div className={styles["body-container"]}>
-            <header>
-               <div className={styles["options-container"]}>
-                  <label class="my-button-1" htmlFor={styles["side-checkbox"]}>Настройки</label>
-               </div>
-               <div className={styles["logo"]}><a href="/">TO-DO-LIST</a></div>
-               <div className={styles["RegAuth-container"]}>
-                  <Link to="/auth"><button className={styles["loginButton"]}>Войти</button></Link>
-                  <Link to="/register"><button className={styles["regsButton"]}>Зарегистрироваться</button></Link>
-               </div>
-            </header>
-
             <input type="checkbox" id={styles["side-checkbox"]} />
             <div className={styles["side-panel"]}>
                <label className={styles["side-button-2"]} htmlFor={styles["side-checkbox"]}>+</label>

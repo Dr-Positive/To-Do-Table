@@ -8,9 +8,12 @@ import  AuthPage  from "./pages/authPage";
 import  RegPage  from "./pages/regPage";
 import  DetailPage  from "./pages/DetailPage";
 
+import {Navbar} from './components/Navbar'
+
 function App() {
   return (
     <>
+    <div><Navbar/></div>
     <Routes>
       <Route path="/" element={ <MainPage />} />
       <Route path="/auth" element={ <AuthPage />} />
