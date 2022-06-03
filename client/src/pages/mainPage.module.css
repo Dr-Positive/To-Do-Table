@@ -259,6 +259,24 @@ border-radius: 5px;
   outline: none; 
 }
 
+.popupForm-input:invalidForm {
+  color:  rgb(128, 128, 128);
+  background-color: #E8EEEF;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  border: 3px solid #e95353;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1.2em ;
+  margin-left: 2em;
+  width: 100%;
+  outline: none;
+}
+
+option {
+  background-color: rgb(248, 243, 243);
+}
+
 
 /*БОКОВАЯ ПАНЕЛЬ*/
 /* Оформление панели */
