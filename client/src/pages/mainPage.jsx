@@ -1,8 +1,8 @@
 import styles from "./mainPage.module.css";
 import React, { useState, useEffect, useCallback, useContext } from "react";
-import { Button, TextField, Checkbox, select } from "@material-ui/core";
+//import { Button, TextField, Checkbox, select } from "@material-ui/core";
 import { useHttp } from "../hooks/http.hook";
-import { useMessage } from "../hooks/message.hook";
+//import { useMessage } from "../hooks/message.hook";
 import 'materialize-css'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -27,7 +27,7 @@ function MainPage({ onSubmit }) {
 
 
    const { token } = useContext(AuthContext)
-   const message = useMessage();
+   //const message = useMessage();
    const [task, setTask] = useState('')
    const { loading, request, error, clearError } = useHttp();
    const [values, setValues] = useState({
@@ -52,7 +52,6 @@ function MainPage({ onSubmit }) {
          //console.log(fetched)
          console.log("fetched:", fetched)
          setTask(fetched)
-         //   data = json(fetched)
 
       } catch (e) { }
    }, [token, request])
@@ -64,24 +63,10 @@ function MainPage({ onSubmit }) {
    }, [fetchTasks])
 
 
-   //    const DisplayData=task.map(
-   //       (item)=>{
-   //           return(
-   //               <tr>
-   //                   <td>{item.id}</td>
-   //                   <td>{item.taskName}</td>
-   //                   <td>{item.taskTheme}</td>
-   //               </tr>
-   //           )
-   //       }
-   //   )
-
 
    const handleFieldChange = (evt) => {
       setValues({ ...values, [evt.target.name]: evt.target.value });
-
       console.log("Check data", evt.target.name, evt.target.value);
-
       //console.log(values["taskName"]);
    }
 
